@@ -12,7 +12,7 @@ Row {
 
     // find max workspace id
     readonly property int dynamicMax: {
-        let max = 5; // max workspace visible by default
+        let max = 6; // max workspace visible by default
         let workspaces = Hyprland.workspaces.values;
 
         for (let i = 0; i < workspaces.length; i++) {

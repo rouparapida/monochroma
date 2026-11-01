@@ -4,14 +4,14 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Shapes
 import qs.themes
-import qs.components
+import qs.barComponents
 
 PanelWindow {
     id: bar
 
     // bar config
-    property int componentBorderMargins: 30
-    property int componentSpacing: 9
+    property int componentBorderMargins: 33
+    property int componentSpacing: 8
     property int cornerWing: 16
 
     property var currentTheme: Monochrome
@@ -26,8 +26,8 @@ PanelWindow {
     }
 
     margins {
-        left: 250
-        right: 250
+        left: 400
+        right: 400
         top: 0
     }
 
@@ -137,20 +137,6 @@ PanelWindow {
 
             spacing: bar.componentSpacing
 
-            Clock {
-               anchors.verticalCenter: parent.verticalCenter
-               textColor: currentTheme.text
-               textFont: currentTheme.font
-            }
-
-            Text {
-                anchors.verticalCenter: parent.verticalCenter
-
-                text: "|"
-                color: currentTheme.text
-                font.family: currentTheme.fontalt
-            }
-
             Workspaces {
                 anchors.verticalCenter: parent.verticalCenter
 
@@ -161,6 +147,8 @@ PanelWindow {
             }
 
             Notifications {
+                anchors.verticalCenter: parent.verticalCenter
+                
                 textColor: currentTheme.text
                 iconFont: currentTheme.font
             }
@@ -171,6 +159,11 @@ PanelWindow {
             anchors.centerIn: parent
             spacing: bar.componentSpacing
 
+            Clock {
+                anchors.verticalCenter: parent.verticalCenter   
+                textColor: currentTheme.text
+                textFont: currentTheme.font
+            }
         }
 
         // right modules
@@ -183,20 +176,39 @@ PanelWindow {
 
             spacing: bar.componentSpacing
 
-            Text {
+            
+            Tray {
                 anchors.verticalCenter: parent.verticalCenter
 
-                text: "tray" // wifi - volume - brightness 
-                color: currentTheme.text
-                font.family: currentTheme.font
+                panelWindow: bar
+                pillColor: currentTheme.backgroundalt
+                iconSize: 16
+                iconSpacing: 7
             }
 
-            Text {
+
+            Network {
+                anchors.verticalCenter: parent.verticalCenter
+                
+                textColor: currentTheme.text
+                noConnectionColor: currentTheme.textalt2
+                iconFont: currentTheme.fontalt
+            }
+
+            Volume {
                 anchors.verticalCenter: parent.verticalCenter
 
-                text: "modules" // wifi - volume - brightness 
-                color: currentTheme.text
-                font.family: currentTheme.font
+                textColor: currentTheme.text
+                mutedColor: currentTheme.textalt2
+                iconFont: currentTheme.font
+            }
+
+            Brightness {
+                anchors.verticalCenter: parent.verticalCenter
+                
+                textColor: currentTheme.text
+                lowBrightnessColor: currentTheme.textalt2
+                iconFont: currentTheme.fontalt
             }
 
             Text {
@@ -204,23 +216,22 @@ PanelWindow {
 
                 text: "|"
                 color: currentTheme.text
-                font.family: currentTheme.font
+                font.family: currentTheme.fontalt
             }
 
-            Text {
+            Battery {
                 anchors.verticalCenter: parent.verticalCenter
-
-                text: "battery"
-                color: currentTheme.text
-                font.family: currentTheme.font
+                
+                textColor: currentTheme.text
+                textFont: currentTheme.font
+                iconFont: currentTheme.fontalt
             }
 
-            Text {
+            Power {
                 anchors.verticalCenter: parent.verticalCenter
 
-                text: "power"
-                color: currentTheme.text
-                font.family: currentTheme.font
+                textColor: currentTheme.text
+                iconFont: currentTheme.font
             }
 
         }

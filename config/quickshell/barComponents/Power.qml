@@ -5,13 +5,12 @@ Rectangle {
     id: root
 
     property color textColor: "#ffffff"
-    property string iconFont: "JetBrainsMono Nerd Font Propo"
+    property string iconFont: "JetbrainsMono Nerd Font Propo"
 
     implicitHeight: 18
     implicitWidth: icon.implicitWidth 
     width: implicitWidth
     height: implicitHeight
-    radius: height / 2
     color: "transparent"
 
     Text {
@@ -19,9 +18,9 @@ Rectangle {
 
         anchors.centerIn: parent
 
-        text: ""
+        text: ""
         color: root.textColor
-        font.pixelSize: 12
+        font.pixelSize: 13
         font.bold: true
         font.family: root.iconFont
     }
@@ -31,7 +30,7 @@ Rectangle {
         cursorShape: Qt.PointingHandCursor
 
         onClicked: {
-            Quickshell.execDetached(["swaync-client", "-t"])
+            Quickshell.execDetached(["systemctl", "poweroff"])
         }
     }
 }
