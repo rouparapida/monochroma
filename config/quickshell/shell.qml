@@ -1,6 +1,9 @@
 //@ pragma UseQApplication
 import Quickshell
+import qs.bar
+import qs.notifications
 
 ShellRoot {
-    Bar {}
+    MainBar {}
+    NotificationsServer {}
 }

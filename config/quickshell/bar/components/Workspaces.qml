@@ -7,7 +7,7 @@ Row {
 
     property color focusedBg: "#ffffff"
     property color focusedText: "#000000"
-    property color unfocusedText: "#ccffffff"
+    property color unfocusedText: "#888888"
     property string textFont: "Inter"
 
     // find max workspace id
@@ -58,7 +58,7 @@ Row {
                 anchors.centerIn: parent
                 text: hyprlandWorkspaces.id
                 color: hyprlandWorkspaces.focused ? root.focusedText : root.unfocusedText
-                font.pixelSize: 12
+                font.pixelSize: 11
                 font.bold: hyprlandWorkspaces.focused ? true : false
                 font.family: root.textFont
             }

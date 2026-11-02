@@ -31,7 +31,7 @@ Rectangle {
         cursorShape: Qt.PointingHandCursor
 
         onClicked: {
-            Quickshell.execDetached(["swaync-client", "-t"])
+            Quickshell.execDetached(["qs", "ipc", "call", "notifications", "toggle"])
         }
     }
 }

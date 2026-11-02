@@ -18,7 +18,7 @@ Rectangle {
     property string iconMedium: ""
     property string iconLow: ""
     property string iconEmpty: ""
-    property string iconPlug: ""
+    property string iconPlug: ""
 
     anchors.verticalCenter: parent.verticalCenter
 
@@ -119,7 +119,8 @@ Rectangle {
             text: root.batteryLevel + "%"
             color: textColor
             font.family: textFont
-            font.pixelSize: 12
+            font.bold: true
+            font.pixelSize: 11
         }
     }
 
