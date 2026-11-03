@@ -1,4 +1,3 @@
-
 import Quickshell
 import Quickshell.Wayland
 import QtQuick
@@ -95,7 +94,7 @@ Item {
                 left: parent.left
             }
 
-            width: 400
+            width: 370
             height: 600
 
             radius: 0
@@ -167,7 +166,7 @@ Item {
                         implicitWidth: clearLabel.implicitWidth + 20
                         implicitHeight: 30
 
-                        radius: 8
+                        radius: 4
 
                         color: clearMouse.containsMouse
                                ? root.currentTheme.color12
