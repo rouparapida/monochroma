@@ -10,7 +10,7 @@ PanelWindow {
     id: bar
 
     // bar config
-    property int componentBorderMargins: 28
+    property int componentBorderMargins: 12
     property int componentSpacing: 8
     property int cornerWing: 16
 
@@ -38,10 +38,10 @@ PanelWindow {
         Rectangle {
             id: barBody
 
-            x: bar.cornerWing
-            y: 0
+            anchors.fill: parent
             width: parent.width - (bar.cornerWing * 2)
             height: parent.height
+
             color: currentTheme.color0
             radius: height / 2
         }
