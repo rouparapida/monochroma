@@ -5,5 +5,4 @@ import qs.notifications
 
 ShellRoot {
     MainBar {}
-    NotificationsServer {}
 }

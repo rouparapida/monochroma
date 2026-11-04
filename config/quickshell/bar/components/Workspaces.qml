@@ -1,3 +1,4 @@
+
 import QtQuick
 import Quickshell
 import Quickshell.Hyprland
@@ -5,68 +6,93 @@ import Quickshell.Hyprland
 Row {
     id: root
 
+    // Colors
     property color focusedBg: "#ffffff"
-    property color focusedText: "#000000"
-    property color unfocusedText: "#888888"
-    property string textFont: "Inter"
+    property color unfocusedBg: "#888888"
+    property color emptyBg: "#333333"
 
-    // find max workspace id
+    // Dimensions
+    property int indicatorSize: 8
+    property int activeWidth: 28
+    property int indicatorHeight: 10
+    property int indicatorSpacing: 5
+
+    // Find the highest workspace ID
     readonly property int dynamicMax: {
-        let max = 6; // max workspace visible by default
-        let workspaces = Hyprland.workspaces.values;
+        let max = 6;
+        const workspaces = Hyprland.workspaces.values;
 
         for (let i = 0; i < workspaces.length; i++) {
             if (workspaces[i].id > max)
                 max = workspaces[i].id;
         }
 
-        if (Hyprland.focusedWorkspace && Hyprland.focusedWorkspace.id > max)
+        if (Hyprland.focusedWorkspace
+                && Hyprland.focusedWorkspace.id > max) {
             max = Hyprland.focusedWorkspace.id;
+        }
 
         return max;
     }
 
-    spacing: 3
+    spacing: indicatorSpacing
 
     Repeater {
         model: root.dynamicMax
-        anchors.verticalCenter: parent.verticalCenter
 
-        Rectangle {
+        delegate: Rectangle {
+            id: indicator
+
             required property int index
-            property int workspaceId: index + 1
 
-            readonly property var hyprlandWorkspaces: {
-                let found = Hyprland.workspaces.values.find((ws) => {
-                    return ws.id === workspaceId;
-                });
+            readonly property int workspaceId: index + 1
 
-                return found ? found : {
-                    "id": workspaceId,
-                    "focused": false
-                };
+            readonly property var workspace: {
+                const workspaces = Hyprland.workspaces.values;
+
+                return workspaces.find(
+                    ws => ws.id === workspaceId
+                ) || null;
             }
 
-            implicitWidth: hyprlandWorkspaces.focused ? 38 : 12
-            implicitHeight: 16
+            readonly property bool isFocused:
+                Hyprland.focusedWorkspace !== null
+                && Hyprland.focusedWorkspace !== undefined
+                && Hyprland.focusedWorkspace.id === workspaceId
+
+            readonly property bool isOccupied: workspace !== null
+
+            // Active workspace is a pill; inactive ones are circles
+            width: isFocused ? root.activeWidth : root.indicatorSize
+            height: isFocused ? root.indicatorHeight : root.indicatorSize
+
             radius: height / 2
 
-            color: hyprlandWorkspaces.focused ? root.focusedBg : "transparent"
-            visible: hyprlandWorkspaces.id > 0
+            color: isFocused
+                   ? root.focusedBg
+                   : isOccupied
+                     ? root.unfocusedBg
+                     : root.emptyBg
 
-            Text {
-                anchors.centerIn: parent
-                text: hyprlandWorkspaces.id
-                color: hyprlandWorkspaces.focused ? root.focusedText : root.unfocusedText
-                font.pixelSize: 11
-                font.bold: hyprlandWorkspaces.focused ? true : false
-                font.family: root.textFont
-            }
+            // Keep indicators vertically aligned
+            anchors.verticalCenter: parent ? parent.verticalCenter : undefined
 
-            Behavior on implicitWidth {
+            Behavior on width {
                 NumberAnimation {
                     duration: 200
                     easing.type: Easing.OutCubic
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+
+                cursorShape: Qt.PointingHandCursor
+
+                onClicked: {
+                    Hyprland.dispatch(
+                        "workspace " + indicator.workspaceId
+                    );
                 }
             }
         }

@@ -12,7 +12,6 @@ PanelWindow {
     // bar config
     property int componentBorderMargins: 12
     property int componentSpacing: 8
-    property int cornerWing: 16
 
     property var currentTheme: Monochrome
 
@@ -60,11 +59,10 @@ PanelWindow {
                 anchors.verticalCenter: parent.verticalCenter
 
                 focusedBg: currentTheme.color1
-                focusedText: currentTheme.color0
-                unfocusedText: currentTheme.color9
-                textFont: currentTheme.font
+                unfocusedBg: currentTheme.color8
+                emptyBg: currentTheme.color4
             }
-
+ 
             Text {
                 anchors.verticalCenter: parent.verticalCenter
 
