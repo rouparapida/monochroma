@@ -1,8 +1,9 @@
 //@ pragma UseQApplication
 import Quickshell
 import qs.bar
-import qs.notifications
+import qs.widgets
 
 ShellRoot {
     MainBar {}
+    CalendarMenu {}
 }

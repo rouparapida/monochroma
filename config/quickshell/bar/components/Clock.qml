@@ -24,5 +24,14 @@ Row {
             id: clock
             precision: SystemClock.Minutes
         }
+
+        MouseArea {
+        anchors.fill: parent
+        cursorShape: Qt.PointingHandCursor
+
+        onClicked: {
+            Quickshell.execDetached(["qs", "ipc", "call", "calendarSidebar", "toggle"])
+        }
+    }
     }
 }

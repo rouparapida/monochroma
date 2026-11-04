@@ -31,7 +31,7 @@ Rectangle {
         cursorShape: Qt.PointingHandCursor
 
         onClicked: {
-            Quickshell.execDetached(["qs", "ipc", "call", "notifications", "toggle"])
-        }
+            Quickshell.execDetached(["kitty"])
+        }   
     }
 }

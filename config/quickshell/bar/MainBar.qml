@@ -71,24 +71,21 @@ PanelWindow {
                 font.family: currentTheme.nerdFont
             }
 
-            Notifications {
-                anchors.verticalCenter: parent.verticalCenter
-
-                textColor: currentTheme.color1
-                iconFont: currentTheme.font
-            }
-        }
-
-        // center modules
-        RowLayout {
-            anchors.centerIn: parent
-            spacing: bar.componentSpacing
-
             Clock {
                 anchors.verticalCenter: parent.verticalCenter   
                 textColor: currentTheme.color1
                 textFont: currentTheme.font
             }
+
+            Tray {
+                anchors.verticalCenter: parent.verticalCenter
+
+                panelWindow: bar
+                pillColor: currentTheme.color3
+                iconSize: 15
+                iconSpacing: 7
+            }
+
         }
 
         // right modules
@@ -100,15 +97,6 @@ PanelWindow {
             }
 
             spacing: bar.componentSpacing
-
-            Tray {
-                anchors.verticalCenter: parent.verticalCenter
-
-                panelWindow: bar
-                pillColor: currentTheme.color3
-                iconSize: 16
-                iconSpacing: 7
-            }
 
             Network {
                 anchors.verticalCenter: parent.verticalCenter
@@ -132,6 +120,13 @@ PanelWindow {
                 textColor: currentTheme.color1
                 lowBrightnessColor: currentTheme.color8
                 iconFont: currentTheme.nerdFont
+            }
+
+            Notifications {
+                anchors.verticalCenter: parent.verticalCenter
+
+                textColor: currentTheme.color1
+                iconFont: currentTheme.font
             }
 
             Text {
