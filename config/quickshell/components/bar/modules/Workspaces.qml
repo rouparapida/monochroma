@@ -1,25 +1,23 @@
-
 import QtQuick
 import Quickshell
 import Quickshell.Hyprland
 
+// workspaces module configuration
 Row {
     id: root
 
-    // Colors
     property color focusedBg: "#ffffff"
     property color unfocusedBg: "#888888"
     property color emptyBg: "#333333"
 
-    // Dimensions
     property int indicatorSize: 8
-    property int activeWidth: 28
-    property int indicatorHeight: 10
+    property int indicatorHeight: 8
     property int indicatorSpacing: 5
+    property int activeWidth: 28
 
-    // Find the highest workspace ID
+    // find highest workspace id
     readonly property int dynamicMax: {
-        let max = 6;
+        let max = 10;
         const workspaces = Hyprland.workspaces.values;
 
         for (let i = 0; i < workspaces.length; i++) {
@@ -37,6 +35,7 @@ Row {
 
     spacing: indicatorSpacing
 
+    // workspace module
     Repeater {
         model: root.dynamicMax
 
@@ -44,7 +43,6 @@ Row {
             id: indicator
 
             required property int index
-
             readonly property int workspaceId: index + 1
 
             readonly property var workspace: {
@@ -62,37 +60,25 @@ Row {
 
             readonly property bool isOccupied: workspace !== null
 
-            // Active workspace is a pill; inactive ones are circles
+            anchors.verticalCenter: parent ? parent.verticalCenter : undefined
+
+            // active workspace is a pill, inactives are circles
             width: isFocused ? root.activeWidth : root.indicatorSize
             height: isFocused ? root.indicatorHeight : root.indicatorSize
 
             radius: height / 2
 
+            // active workspaces are white, the ones that have windows in are grey, and the inactive ones are darker grey
             color: isFocused
                    ? root.focusedBg
                    : isOccupied
                      ? root.unfocusedBg
                      : root.emptyBg
 
-            // Keep indicators vertically aligned
-            anchors.verticalCenter: parent ? parent.verticalCenter : undefined
-
             Behavior on width {
                 NumberAnimation {
                     duration: 200
                     easing.type: Easing.OutCubic
-                }
-            }
-
-            MouseArea {
-                anchors.fill: parent
-
-                cursorShape: Qt.PointingHandCursor
-
-                onClicked: {
-                    Hyprland.dispatch(
-                        "workspace " + indicator.workspaceId
-                    );
                 }
             }
         }

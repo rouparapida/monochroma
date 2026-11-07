@@ -5,7 +5,7 @@ Rectangle {
     id: root
 
     property color textColor: "#ffffff"
-    property string iconFont: "JetbrainsMono Nerd Font Propo"
+    property string textFont: "Inter"
 
     implicitHeight: 18
     implicitWidth: icon.implicitWidth 
@@ -15,14 +15,14 @@ Rectangle {
 
     Text {
         id: icon
-
+        
         anchors.centerIn: parent
 
-        text: ""
+        text: "Power"
         color: root.textColor
-        font.pixelSize: 13
-        font.bold: true
-        font.family: root.iconFont
+        font.pixelSize: 11
+        font.weight: Font.DemiBold
+        font.family: root.textFont
     }
 
     MouseArea {

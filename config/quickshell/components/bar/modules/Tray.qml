@@ -7,14 +7,14 @@ Rectangle {
     id: root
 
     property var panelWindow
-
+    
     property color pillColor: "#14ffffff"
 
     property int iconSize: 16
     property int iconSpacing: 7
 
     property int horizontalPadding: 8
-    property int verticalPadding: 4
+    property int verticalPadding: 2
 
     implicitWidth: trayContent.implicitWidth + horizontalPadding * 2
     implicitHeight: iconSize + verticalPadding * 1
