@@ -3,8 +3,8 @@ pragma Singleton
 import QtQuick
 
 QtObject {
-    readonly property color color0: "#090909"
-    readonly property color color1: "#EAEAEA"
+    readonly property color color0: "#000000"
+    readonly property color color1: "#ffffff"
 
     readonly property color color2: "#151515"
     readonly property color color3: "#1D1D1D"

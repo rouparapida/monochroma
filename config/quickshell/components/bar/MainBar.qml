@@ -19,7 +19,7 @@ PanelWindow {
     }
 
     margins {
-        top: 4
+        top: 0
         left: 200
         right: 200
     }
@@ -32,7 +32,9 @@ PanelWindow {
         anchors.fill: parent
 
         color: currentTheme.color0
-        radius: height / 2
+        radius: 0
+        bottomLeftRadius: 16
+        bottomRightRadius: 16
 
         //left modules
         RowLayout {
@@ -91,7 +93,6 @@ PanelWindow {
             Battery {
                 textColor: currentTheme.color1
                 textFont: currentTheme.font 
-                iconFont: currentTheme.iconFont
             }
 
             Power {

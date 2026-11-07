@@ -7,17 +7,9 @@ Rectangle {
 
     property color textColor: "#ffffff"
     property string textFont: "Inter"
-    property string iconFont: "JetbrainsMono Nerd Font Propo"
 
     property int batteryLevel: 0
     property bool chargerConnected: false
-
-    property string iconFull: ""
-    property string iconHigh: ""
-    property string iconMedium: ""
-    property string iconLow: ""
-    property string iconEmpty: ""
-    property string iconPlug: ""
 
     anchors.verticalCenter: parent.verticalCenter
 
@@ -25,25 +17,6 @@ Rectangle {
     implicitWidth: bat.implicitWidth
 
     color: "transparent"
-
-    function updateBatteryIcon() {
-        if (root.chargerConnected)
-            return root.iconPlug
-
-        if (root.batteryLevel >= 80)
-            return root.iconFull
-
-        if (root.batteryLevel >= 60)
-            return root.iconHigh
-
-        if (root.batteryLevel >= 40)
-            return root.iconMedium
-
-        if (root.batteryLevel >= 20)
-            return root.iconLow
-
-        return root.iconEmpty
-    }
 
     Process {
         id: batteryProcess
@@ -85,7 +58,7 @@ Rectangle {
 
         Component.onCompleted: running = true
     }
-    
+
     Row {
         id: bat
 
@@ -131,10 +104,10 @@ Rectangle {
             }
         }
 
-        // Battery percentage
+        // battery percentage
         Text {
             anchors.verticalCenter: parent.verticalCenter
-            
+
             text: root.batteryLevel + "%"
             color: root.textColor
 
