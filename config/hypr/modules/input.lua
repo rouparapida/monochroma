@@ -1,8 +1,8 @@
 -- Input
 hl.config({
     input = {
-        kb_layout = "br",
-        kb_variant = "abnt2",
+        kb_layout = "",
+        kb_variant = "",
         kb_model = "",
         kb_options = "",
         kb_rules = "",

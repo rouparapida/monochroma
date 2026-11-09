@@ -5,10 +5,10 @@ Rectangle {
     id: root
 
     property color textColor: "#ffffff"
-    property string textFont: "Inter"
+    property string iconFont: "JetbrainsMono Nerd Font Propo"
 
     implicitHeight: 18
-    implicitWidth: icon.implicitWidth 
+    implicitWidth: icon.implicitWidth
     width: implicitWidth
     height: implicitHeight
     color: "transparent"
@@ -22,7 +22,7 @@ Rectangle {
         color: root.textColor
         font.pixelSize: 11
         font.weight: Font.DemiBold
-        font.family: root.textFont
+        font.family: root.iconFont
     }
 
     MouseArea {

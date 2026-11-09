@@ -1,8 +1,8 @@
 -- Window look
 hl.config({
     general = {
-        gaps_in = 6,
-        gaps_out = 12,
+        gaps_in = 4,
+        gaps_out = 8,
         border_size = 0,
 
         col = {
@@ -16,7 +16,7 @@ hl.config({
     },
 
     decoration = {
-        rounding = 10,
+        rounding = 12,
         rounding_power = 2,
 
         active_opacity = 1.0,

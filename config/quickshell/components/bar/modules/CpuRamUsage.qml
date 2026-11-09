@@ -106,16 +106,16 @@ Row {
     Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         width: 42
-        height: 5
+        height: 3
 
         color: root.trackColor
-        radius: 3
+        radius: 0
 
         Rectangle {
             width: parent.width * root.cpuUsage / 100
             height: parent.height
             color: root.barColor
-            radius: 3
+            radius: 0
 
             Behavior on width {
                 NumberAnimation {
@@ -159,9 +159,9 @@ Row {
     // RAM bar
     Rectangle {
         width: 42
-        height: 5
+        height: 3
         color: root.trackColor
-        radius: 3
+        radius: 0
 
         anchors.verticalCenter: parent.verticalCenter
 
@@ -169,7 +169,7 @@ Row {
             width: parent.width * root.ramUsage / 100
             height: parent.height
             color: root.barColor
-            radius: 3
+            radius: 0
 
             Behavior on width {
                 NumberAnimation {

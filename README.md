@@ -69,7 +69,6 @@ Example:
 | SUPER + E | Open file manager |
 | SUPER + Space | Open application launcher |
 | SUPER + L | Lock screen |
-| SUPER + N | Notification center |
 | SUPER + SHIFT + W | Wallpaper selector |
 | SUPER + SHIFT + S | Screenshot (region) |
 | Print Screen | Screenshot (full screen) |

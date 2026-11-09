@@ -10,8 +10,8 @@ Row {
     property color unfocusedBg: "#888888"
     property color emptyBg: "#333333"
 
-    property int indicatorSize: 8
-    property int indicatorHeight: 8
+    property int indicatorSize: 6
+    property int indicatorHeight: 6
     property int indicatorSpacing: 5
     property int activeWidth: 28
 
