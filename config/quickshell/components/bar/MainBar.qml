@@ -91,6 +91,13 @@ PanelWindow {
                 unfocusedBg: config.currentTheme.color8
                 emptyBg: config.currentTheme.color4
             }
+
+            Tray {
+                panelWindow: config
+                iconSize: 16
+                iconSpacing: 6
+                hoverColor: config.currentTheme.color4
+            }
         }
 
         // right modules
@@ -102,6 +109,12 @@ PanelWindow {
             }
 
             spacing: config.moduleSpacing
+
+            Modules {
+                textColor: currentTheme.color1
+                iconFont: currentTheme.nerdFont
+                itemSpacing: 8
+            }
 
             Separator {
                 textColor: config.currentTheme.color8
