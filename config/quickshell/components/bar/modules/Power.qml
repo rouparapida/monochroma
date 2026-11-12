@@ -1,28 +1,28 @@
+
 import Quickshell
 import QtQuick
+import QtQuick.VectorImage
 
 Rectangle {
     id: root
 
-    property color textColor: "#ffffff"
-    property string iconFont: "JetbrainsMono Nerd Font Propo"
-
     implicitHeight: 18
-    implicitWidth: icon.implicitWidth
-    width: implicitWidth
-    height: implicitHeight
+    implicitWidth: 18
+
     color: "transparent"
 
-    Text {
+    VectorImage {
         id: icon
-        
+
         anchors.centerIn: parent
 
-        text: "Power"
-        color: root.textColor
-        font.pixelSize: 11
-        font.weight: Font.DemiBold
-        font.family: root.iconFont
+        source: Qt.resolvedUrl("../../../assets/icons/power.svg")
+
+        width: 14
+        height: 14
+
+        fillMode: VectorImage.PreserveAspectFit
+        preferredRendererType: VectorImage.CurveRenderer
     }
 
     MouseArea {

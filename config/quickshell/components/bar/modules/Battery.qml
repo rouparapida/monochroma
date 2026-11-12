@@ -80,9 +80,9 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
 
             width: 25
-            height: 3
+            height: 5
 
-            radius: 0
+            radius: height / 2
             color: "#333333"
 
             Rectangle {
@@ -92,7 +92,7 @@ Rectangle {
                 width: parent.width * root.batteryLevel / 100
                 height: parent.height
 
-                radius: 0
+                radius: height / 2
                 color: root.textColor
 
                 Behavior on width {
