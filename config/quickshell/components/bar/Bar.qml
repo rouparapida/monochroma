@@ -7,12 +7,12 @@ import qs.components.bar.modules
 PanelWindow {
     id: config
 
-    // bar configuration
+    // configuration
+    property var currentTheme: Monochroma
+    
     property int barHeight: 30
     property int modulesBorderMargins: 12
     property int moduleSpacing: 10
-
-    property var currentTheme: Monochroma
 
     anchors {
         top: true
@@ -21,35 +21,24 @@ PanelWindow {
     }
 
     margins {
-        top: 4
-        left: 50
-        right: 50
+        top: 0
+        left: 150
+        right: 150
     }
 
     implicitHeight: barHeight
-    exclusiveZone: barHeight
-
     color: "transparent"
 
-    // only the actual bar receives pointer input
-    mask: Region {
-        item: barBackground
-    }
-
-    // main bar
+    // bar body
     Rectangle {
-        id: barBackground
+        id: barBody
 
-        anchors {
-            top: parent.top
-            left: parent.left
-            right: parent.right
-        }
-
-        height: config.barHeight
+        anchors.fill: parent
+        height: config.barheight
         color: config.currentTheme.color0
-        radius: height / 2
-        z: 1
+        radius: 0
+        bottomLeftRadius: height / 2
+        bottomRightRadius: height / 2
 
         // left modules
         RowLayout {
@@ -89,12 +78,6 @@ PanelWindow {
             }
 
             spacing: config.moduleSpacing
-
-            Modules {
-                textColor: currentTheme.color1
-                iconFont: currentTheme.nerdFont
-                itemSpacing: 8
-            }
 
             Battery {
                 textColor: config.currentTheme.color1
