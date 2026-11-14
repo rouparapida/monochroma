@@ -1,14 +1,14 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import qs.themes
+import qs.colors
 import qs.components.bar.modules
 
 PanelWindow {
     id: config
 
     // configuration
-    property var currentTheme: Monochroma
+    property var currentTheme: CurrentColorscheme
     
     property int barHeight: 30
     property int modulesBorderMargins: 12
@@ -50,12 +50,19 @@ PanelWindow {
 
             spacing: config.moduleSpacing
 
-            Search {}
+            Search {
+                iconFont: config.currentTheme.nerdFont
+                iconColor: config.currentTheme.color1
+            }
 
             Workspaces {
                 focusedBg: config.currentTheme.color1
                 unfocusedBg: config.currentTheme.color8
                 emptyBg: config.currentTheme.color4
+            }
+
+            Tray {
+                panelWindow: config
             }
         }
 
@@ -79,12 +86,10 @@ PanelWindow {
 
             spacing: config.moduleSpacing
 
-            Battery {
-                textColor: config.currentTheme.color1
-                textFont: config.currentTheme.font
+            Power {
+                iconFont: config.currentTheme.nerdFont
+                iconColor: config.currentTheme.color1
             }
-
-            Power {}
         }
     }
 }

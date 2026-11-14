@@ -1,28 +1,30 @@
-
 import Quickshell
 import QtQuick
-import QtQuick.VectorImage
 
 Rectangle {
     id: root
+
+    // configuration
+    property string iconGlyph: ""
+    property string iconFont: "JetbrainsMono Nerd Font Propo"
+    property color iconColor: "#ffffff"
+    property int iconSize: 13
 
     implicitHeight: 18
     implicitWidth: 18
 
     color: "transparent"
 
-    VectorImage {
-        id: icon
-
+    Text {
         anchors.centerIn: parent
 
-        source: Qt.resolvedUrl("../../../assets/icons/search.svg")
+        text: root.iconGlyph
+        color: iconColor
 
-        width: 14
-        height: 14
-
-        fillMode: VectorImage.PreserveAspectFit
-        preferredRendererType: VectorImage.CurveRenderer
+        font {
+            family: iconFont
+            pixelSize: root.iconSize
+        }
     }
 
     MouseArea {
@@ -30,7 +32,12 @@ Rectangle {
         cursorShape: Qt.PointingHandCursor
 
         onClicked: {
-            Quickshell.execDetached(["rofi", "-show", "drun", "-show-icons"])
+            Quickshell.execDetached([
+                "rofi",
+                "-show",
+                "drun",
+                "-show-icons"
+            ])
         }
     }
 }
