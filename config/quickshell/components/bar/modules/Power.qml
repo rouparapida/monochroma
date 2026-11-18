@@ -1,39 +1,37 @@
-import Quickshell
 import QtQuick
+import Quickshell
+import qs.colors
 
-Rectangle {
+Item {
     id: root
 
-    // configuration
-    property string iconGlyph: ""
-    property string iconFont: "JetbrainsMono Nerd Font Propo"
-    property color iconColor: "#ffffff"
-    property int iconSize: 13
+    property var currentTheme: CurrentColorscheme
 
-    implicitHeight: 18
-    implicitWidth: 18
+    implicitWidth: powerIcon.implicitWidth
+    implicitHeight: powerIcon.implicitHeight
 
-    color: "transparent"
-
+    // icon
     Text {
+        id: powerIcon
+
         anchors.centerIn: parent
 
-        text: root.iconGlyph
-        color: iconColor
+        text: ""
 
-        font {
-            family: iconFont
-            pixelSize: root.iconSize
-        }
+        font.family: root.currentTheme.nerdFont
+        font.pixelSize: 12
+
+        color: root.currentTheme.color1
     }
 
     MouseArea {
         anchors.fill: parent
+
         cursorShape: Qt.PointingHandCursor
 
         onClicked: {
             Quickshell.execDetached([
-                "kitty", // mudar futuramente para o power menu
+                "kitty", // Change to your power menu in the future
             ])
         }
     }

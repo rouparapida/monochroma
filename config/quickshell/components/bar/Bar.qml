@@ -1,3 +1,4 @@
+
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
@@ -9,8 +10,10 @@ PanelWindow {
 
     // configuration
     property var currentTheme: CurrentColorscheme
-    
-    property int barHeight: 30
+
+    property int barHeight: 28
+    property int pillHeight: 28
+    property int pillPadding: 12
     property int modulesBorderMargins: 12
     property int moduleSpacing: 10
 
@@ -21,74 +24,169 @@ PanelWindow {
     }
 
     margins {
-        top: 0
-        left: 150
-        right: 150
+        top: 4
+        left: 0
+        right: 0
     }
 
     implicitHeight: barHeight
     color: "transparent"
 
-    // bar body
+    // bar background
     Rectangle {
         id: barBody
 
         anchors.fill: parent
-        height: config.barheight
-        color: config.currentTheme.color0
+        color: "transparent"
         radius: 0
-        bottomLeftRadius: height / 2
-        bottomRightRadius: height / 2
 
-        // left modules
-        RowLayout {
+        // left pill
+        Rectangle {
+            id: leftPill
+
             anchors {
                 left: parent.left
                 verticalCenter: parent.verticalCenter
                 leftMargin: config.modulesBorderMargins
             }
 
-            spacing: config.moduleSpacing
+            width: leftModules.implicitWidth + config.pillPadding * 2
+            height: config.pillHeight
 
-            Search {
-                iconFont: config.currentTheme.nerdFont
-                iconColor: config.currentTheme.color1
+            color: config.currentTheme.color0
+            radius: height / 2
+
+            border.width: 1
+            border.color: config.currentTheme.color13
+
+            Behavior on width {
+                NumberAnimation {
+                    duration: 200
+                    easing.type: Easing.OutCubic
+                }
             }
 
-            Workspaces {
-                focusedBg: config.currentTheme.color1
-                unfocusedBg: config.currentTheme.color8
-                emptyBg: config.currentTheme.color4
-            }
+            RowLayout {
+                id: leftModules
 
-            Tray {
-                panelWindow: config
+                anchors {
+                    left: parent.left
+                    verticalCenter: parent.verticalCenter
+                    leftMargin: config.pillPadding
+                }
+
+                spacing: config.moduleSpacing
+
+                Search {}
+
+                Rectangle {
+                    width: 1
+                    height: 11
+
+                    anchors.verticalCenter: parent.verticalCenter
+
+                    color: config.currentTheme.color6
+                }
+
+                Workspaces {}
+
+                Rectangle {
+                    width: 1
+                    height: 11
+
+                    anchors.verticalCenter: parent.verticalCenter
+
+                    color: config.currentTheme.color6
+                }
+
+                Tray {
+                    panelWindow: config
+                }
             }
         }
 
-        RowLayout {
+        // center pill
+        Rectangle {
+            id: centerPill
+
             anchors.centerIn: parent
-            spacing: config.moduleSpacing
 
-            Clock {
-                textColor: config.currentTheme.color1
-                textFont: config.currentTheme.font
+            width: centerModules.implicitWidth + config.pillPadding * 2
+            height: config.pillHeight
+
+            color: config.currentTheme.color0
+            radius: height / 2
+
+            border.width: 1
+            border.color: config.currentTheme.color13
+
+            Behavior on width {
+                NumberAnimation {
+                    duration: 200
+                    easing.type: Easing.OutCubic
+                }
+            }
+
+            RowLayout {
+                id: centerModules
+
+                anchors.centerIn: parent
+                spacing: config.moduleSpacing
+
+                Clock {}
             }
         }
 
-        // right modules
-        RowLayout {
+        // right pill
+        Rectangle {
+            id: rightPill
+
             anchors {
                 right: parent.right
                 verticalCenter: parent.verticalCenter
                 rightMargin: config.modulesBorderMargins
             }
 
-            spacing: config.moduleSpacing
+            width: rightModules.implicitWidth + config.pillPadding * 2
+            height: config.pillHeight
 
-            Power {
-                iconFont: config.currentTheme.nerdFont
-                iconColor: config.currentTheme.color1
+            color: config.currentTheme.color0
+            radius: height / 2
+
+            border.width: 1
+            border.color: config.currentTheme.color13
+
+            Behavior on width {
+                NumberAnimation {
+                    duration: 200
+                    easing.type: Easing.OutCubic
+                }
+            }
+
+            RowLayout {
+                id: rightModules
+
+                anchors.centerIn: parent
+                spacing: config.moduleSpacing
+
+                Media {}
+
+                Network {}
+
+                Volume {}
+
+                Battery {}
+
+                Rectangle {
+                    width: 1
+                    height: 11
+
+                    anchors.verticalCenter: parent.verticalCenter
+
+                    color: config.currentTheme.color6
+                }
+
+                Power {}
             }
         }
     }

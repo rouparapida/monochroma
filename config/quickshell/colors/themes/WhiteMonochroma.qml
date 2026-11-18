@@ -1,12 +1,11 @@
-
 pragma Singleton
 import QtQuick
 
 QtObject {
-    readonly property color color0: "#F2F2F2"
+    readonly property color color0: "#FFFFFF"
     readonly property color color1: "#000000"
 
-    readonly property color color2: "#EAEAEA"
+    readonly property color color2: '#E4E4E4'
     readonly property color color3: "#E2E2E2"
     readonly property color color4: "#DBDBDB"
     readonly property color color5: "#C7C7C7"
@@ -19,7 +18,7 @@ QtObject {
     readonly property color color11: "#272727"
     readonly property color color12: "#151515"
 
-    readonly property color color13: "#33000000"
+    readonly property color color13: "#14000000"
 
     readonly property string font: "Inter"
     readonly property string nerdFont: "JetbrainsMono Nerd Font Propo"

@@ -1,14 +1,11 @@
 import QtQuick
 import Quickshell
 import Quickshell.Hyprland
+import qs.colors
 
 // workspaces module configuration
 Row {
     id: root
-
-    property color focusedBg: "#ffffff"
-    property color unfocusedBg: "#888888"
-    property color emptyBg: "#333333"
 
     property int indicatorSize: 6
     property int indicatorHeight: 8
@@ -69,11 +66,15 @@ Row {
             radius: height / 2
 
             // active workspaces are white, the ones that have windows in are grey, and the inactive ones are darker grey
-            color: isFocused
-                   ? root.focusedBg
-                   : isOccupied
-                     ? root.unfocusedBg
-                     : root.emptyBg
+            color: {
+                if (isFocused)
+                    return CurrentColorscheme.color1
+
+                if (isOccupied)
+                    return CurrentColorscheme.color8
+
+                return CurrentColorscheme.color4
+            }
 
             Behavior on width {
                 NumberAnimation {
