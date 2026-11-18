@@ -1,4 +1,3 @@
-
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
@@ -59,6 +58,7 @@ PanelWindow {
             border.width: 1
             border.color: config.currentTheme.color13
 
+            // grow from left to right
             Behavior on width {
                 NumberAnimation {
                     duration: 200
@@ -120,6 +120,7 @@ PanelWindow {
             border.width: 1
             border.color: config.currentTheme.color13
 
+            // grow from both sides
             Behavior on width {
                 NumberAnimation {
                     duration: 200
@@ -156,6 +157,7 @@ PanelWindow {
             border.width: 1
             border.color: config.currentTheme.color13
 
+            // grow from right to left
             Behavior on width {
                 NumberAnimation {
                     duration: 200
