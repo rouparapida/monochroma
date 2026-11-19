@@ -108,10 +108,10 @@ mkdir -p \
     ~/Games \
     ~/Videos \
     ~/Pictures \
+    ~/Pictures/Wallpapers \
     ~/Projects \
     ~/.themes \
     ~/.icons \
-    ~/.config \
     ~/.scripts
 
 echo "Copying dotfiles to user directories"
@@ -119,7 +119,6 @@ if cp -r config/. "$HOME/.config/" && \
      cp -r themes/. "$HOME/.themes/" && \
      cp -r icons/. "$HOME/.icons/" && \
      cp -r scripts/. "$HOME/.scripts/" && \
-     cp -r Wallpapers "$HOME/Pictures/"; then
         echo "Success! All dotfiles were successfully copied."
 else
         echo "ERROR: Failed to copy the dotfiles."
