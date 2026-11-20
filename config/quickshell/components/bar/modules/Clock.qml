@@ -51,7 +51,7 @@ Item {
             font.pixelSize: 11
             font.weight: Font.Medium
 
-            font.capitalization: Font.AllUppercase
+            font.capitalization: Font.Capitalize
             font.letterSpacing: 0.4
         }
     }
