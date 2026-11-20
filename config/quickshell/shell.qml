@@ -2,7 +2,10 @@
 //@ pragma UseQApplication
 import Quickshell
 import qs.components.bar
+import qs.components.osds
 
 ShellRoot {
     Bar {}
+    VolumeOSD {}
+    BrightnessOSD {}
 }

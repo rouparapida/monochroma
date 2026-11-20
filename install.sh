@@ -39,7 +39,6 @@ sudo pacman -S --needed --noconfirm \
     quickshell \
     rofi-wayland \
     awww \
-    swayosd \
     hyprlock \
     hyprshot \
     hyprsunset \

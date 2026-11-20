@@ -1,6 +1,6 @@
 # Monochroma
 
-> Hyprland dotfiles i use daily, focused on simplicity, monochrome palette and modern look.
+> Hyprland personal dotfiles, focused on simplicity, monochrome palette and modern look.
 
 ## Installation
 
