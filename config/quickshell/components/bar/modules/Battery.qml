@@ -31,7 +31,24 @@ Row {
     Text {
         anchors.verticalCenter: parent.verticalCenter
 
-        text: root.pluggedIn ? "" : ""
+        text: {
+            if (root.pluggedIn)
+                return ""
+
+            if (root.batteryPercentage < 0)
+                return ""
+
+            if (root.batteryPercentage >= 90)
+                return ""
+            if (root.batteryPercentage >= 70)
+                return ""
+            if (root.batteryPercentage >= 40)
+                return ""
+            if (root.batteryPercentage >= 15)
+                return ""
+
+            return ""
+        }
 
         font.family: root.currentTheme.nerdFont
         font.pixelSize: root.pluggedIn ? 12 : 12

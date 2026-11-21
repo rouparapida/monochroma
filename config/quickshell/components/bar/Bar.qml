@@ -177,6 +177,8 @@ PanelWindow {
 
                 Volume {}
 
+                Notifications {}
+
                 Battery {}
 
                 Rectangle {
