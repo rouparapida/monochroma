@@ -26,7 +26,6 @@ PanelWindow {
     property color secondaryTextColor: currentTheme.color8
     property color borderColor: currentTheme.color13
     property color selectionColor: currentTheme.color2
-    property color selectionBorderColor: currentTheme.color6
     property color overlayColor: currentTheme.color14
 
     // module fonts
@@ -293,7 +292,6 @@ PanelWindow {
                             selected: index === root.selectedIndex
                             foregroundColor: root.textColor
                             selectionColor: root.selectionColor
-                            selectionBorderColor: root.selectionBorderColor
                             fontFamily: root.textFont
                             iconFontFamily: root.iconFont
 

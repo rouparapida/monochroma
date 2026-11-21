@@ -11,7 +11,6 @@ Rectangle {
     property bool selected: false
     property color foregroundColor: "#f2f2f2"
     property color selectionColor: "#303030"
-    property color selectionBorderColor: "#414141"
     property string fontFamily: "Inter"
     property string iconFontFamily: "JetbrainsMono Nerd Font Propo"
 
@@ -21,8 +20,6 @@ Rectangle {
     // selection styling
     radius: 9
     color: selected ? selectionColor : "transparent"
-    border.width: selected ? 1 : 0
-    border.color: selected ? selectionBorderColor : "transparent"
 
     // result content layout
     RowLayout {
