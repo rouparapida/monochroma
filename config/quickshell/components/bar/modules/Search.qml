@@ -31,7 +31,11 @@ Item {
 
         onClicked: {
             Quickshell.execDetached([
-                "kitty", // Change to your search menu in the future
+                "qs", 
+                "ipc",
+                "call",
+                "appLauncher",
+                "toggle",
             ])
         }
     }

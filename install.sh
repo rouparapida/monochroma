@@ -37,7 +37,6 @@ sudo pacman -S --needed --noconfirm \
 echo "Installing desktop components"
 sudo pacman -S --needed --noconfirm \
     quickshell \
-    rofi-wayland \
     awww \
     hyprlock \
     hyprshot \
