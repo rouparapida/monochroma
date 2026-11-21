@@ -10,11 +10,9 @@ PanelWindow {
     // configuration
     property var currentTheme: CurrentColorscheme
 
-    property int barHeight: 28
-    property int pillHeight: 28
-    property int pillPadding: 12
-    property int modulesBorderMargins: 12
-    property int moduleSpacing: 10
+    property int barHeight: 30
+    property int horizontalPadding: 13
+    property int moduleSpacing: 12
 
     anchors {
         top: true
@@ -24,174 +22,98 @@ PanelWindow {
 
     margins {
         top: 4
-        left: 0
-        right: 0
+        left: 100
+        right: 100
     }
 
     implicitHeight: barHeight
     color: "transparent"
 
-    // bar background
+    // bar body
     Rectangle {
         id: barBody
 
         anchors.fill: parent
-        color: "transparent"
-        radius: 0
 
-        // left pill
-        Rectangle {
-            id: leftPill
+        color: config.currentTheme.color0
+        radius: height / 2
+
+        border.width: 1
+        border.color: config.currentTheme.color13
+
+        // left modules
+        RowLayout {
+            id: leftModules
 
             anchors {
                 left: parent.left
                 verticalCenter: parent.verticalCenter
-                leftMargin: config.modulesBorderMargins
+                leftMargin: config.horizontalPadding
             }
 
-            width: leftModules.implicitWidth + config.pillPadding * 2
-            height: config.pillHeight
+            spacing: config.moduleSpacing
 
-            color: config.currentTheme.color0
-            radius: height / 2
+            Search {}
 
-            border.width: 1
-            border.color: config.currentTheme.color13
-
-            // grow from left to right
-            Behavior on width {
-                NumberAnimation {
-                    duration: 200
-                    easing.type: Easing.OutCubic
-                }
+            Rectangle {
+                width: 1
+                height: 14
+                color: config.currentTheme.color6
             }
 
-            RowLayout {
-                id: leftModules
+            Workspaces {}
 
-                anchors {
-                    left: parent.left
-                    verticalCenter: parent.verticalCenter
-                    leftMargin: config.pillPadding
-                }
+            Rectangle {
+                width: 1
+                height: 14
+                color: config.currentTheme.color6
+            }
 
-                spacing: config.moduleSpacing
-
-                Search {}
-
-                Rectangle {
-                    width: 1
-                    height: 11
-
-                    anchors.verticalCenter: parent.verticalCenter
-
-                    color: config.currentTheme.color6
-                }
-
-                Workspaces {}
-
-                Rectangle {
-                    width: 1
-                    height: 11
-
-                    anchors.verticalCenter: parent.verticalCenter
-
-                    color: config.currentTheme.color6
-                }
-
-                Tray {
-                    panelWindow: config
-                }
+            Tray {
+                panelWindow: config
             }
         }
 
-        // center pill
-        Rectangle {
-            id: centerPill
+        // center modules
+        RowLayout {
+            id: centerModules
 
             anchors.centerIn: parent
 
-            width: centerModules.implicitWidth + config.pillPadding * 2
-            height: config.pillHeight
+            spacing: config.moduleSpacing
 
-            color: config.currentTheme.color0
-            radius: height / 2
-
-            border.width: 1
-            border.color: config.currentTheme.color13
-
-            // grow from both sides
-            Behavior on width {
-                NumberAnimation {
-                    duration: 200
-                    easing.type: Easing.OutCubic
-                }
-            }
-
-            RowLayout {
-                id: centerModules
-
-                anchors.centerIn: parent
-                spacing: config.moduleSpacing
-
-                Clock {}
-            }
+            Clock {}
         }
 
-        // right pill
-        Rectangle {
-            id: rightPill
+        // right modules
+        RowLayout {
+            id: rightModules
 
             anchors {
                 right: parent.right
                 verticalCenter: parent.verticalCenter
-                rightMargin: config.modulesBorderMargins
+                rightMargin: config.horizontalPadding
             }
 
-            width: rightModules.implicitWidth + config.pillPadding * 2
-            height: config.pillHeight
+            spacing: config.moduleSpacing
 
-            color: config.currentTheme.color0
-            radius: height / 2
+            Media {}
 
-            border.width: 1
-            border.color: config.currentTheme.color13
+            Network {}
 
-            // grow from right to left
-            Behavior on width {
-                NumberAnimation {
-                    duration: 200
-                    easing.type: Easing.OutCubic
-                }
+            Volume {}
+
+            Notifications {}
+
+            Battery {}
+
+            Rectangle {
+                width: 1
+                height: 14
+                color: config.currentTheme.color6
             }
 
-            RowLayout {
-                id: rightModules
-
-                anchors.centerIn: parent
-                spacing: config.moduleSpacing
-
-                Media {}
-
-                Network {}
-
-                Volume {}
-
-                Notifications {}
-
-                Battery {}
-
-                Rectangle {
-                    width: 1
-                    height: 11
-
-                    anchors.verticalCenter: parent.verticalCenter
-
-                    color: config.currentTheme.color6
-                }
-
-                Power {}
-            }
+            Power {}
         }
     }
 }
