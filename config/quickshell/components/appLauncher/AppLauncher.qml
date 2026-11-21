@@ -335,40 +335,6 @@ PanelWindow {
                             }
                         }
                     }
-
-                    // footer divider
-                    Rectangle {
-                        width: parent.width
-                        height: 1
-                        color: root.borderColor
-                    }
-
-                    // keyboard navigation hints
-                    Row {
-                        width: parent.width
-                        height: 16
-
-                        Text {
-                            text: "↑ ↓  NAVIGATE"
-                            color: root.secondaryTextColor
-                            font.family: root.textFont
-                            font.pixelSize: 9
-                            font.letterSpacing: 0.4
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-
-                        Item { width: 1; height: 1 }
-
-                        Text {
-                            text: "↵  OPEN    ESC  CLOSE"
-                            color: root.secondaryTextColor
-                            font.family: root.textFont
-                            font.pixelSize: 9
-                            font.letterSpacing: 0.4
-                            anchors.right: parent.right
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
                 }
             }
         }

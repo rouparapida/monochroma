@@ -1,6 +1,5 @@
-# Monochroma
-
-> Hyprland personal dotfiles, focused on simplicity, monochrome palette and modern look.
+## Warning
+This setup wasnt designed for public use. Its just my personal setup for daily use, so it may contain bugs or issues on other devices.
 
 ## Installation
 
@@ -69,6 +68,7 @@ Example:
 | SUPER + E | Open file manager |
 | SUPER + Space | Open application launcher |
 | SUPER + L | Lock screen |
+| SUPER + P | Power menu |
 | SUPER + SHIFT + W | Wallpaper selector |
 | SUPER + SHIFT + S | Screenshot (region) |
 | Print Screen | Screenshot (full screen) |

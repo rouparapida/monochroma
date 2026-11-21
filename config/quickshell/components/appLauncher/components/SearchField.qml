@@ -81,16 +81,5 @@ Item {
                 }
             }
         }
-
-        // escape shortcut hint
-        Text {
-            text: "ESC"
-            color: root.placeholderColor
-            font.family: root.fontFamily
-            font.pixelSize: 9
-            font.weight: Font.DemiBold
-            font.letterSpacing: 0.5
-            Layout.alignment: Qt.AlignVCenter
-        }
     }
 }

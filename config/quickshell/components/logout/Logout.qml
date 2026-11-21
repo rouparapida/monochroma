@@ -120,7 +120,7 @@ Variants {
                             spacing: 4
 
                             Text {
-                                text: "SESSION"
+                                text: "POWER MENU"
 
                                 font.family: root.textFont
                                 font.pixelSize: 10
@@ -255,41 +255,6 @@ Variants {
                                         }
                                     }
                                 }
-                            }
-                        }
-
-                        // session footer
-                        Rectangle {
-                            Layout.fillWidth: true
-                            height: 1
-
-                            color: root.buttonBorderColor
-                        }
-
-                        RowLayout {
-                            Layout.fillWidth: true
-
-                            Text {
-                                text: "ESC to close"
-
-                                font.family: root.textFont
-                                font.pixelSize: 10
-
-                                color: root.currentTheme.color8
-                            }
-
-                            Item {
-                                Layout.fillWidth: true
-                            }
-
-                            Text {
-                                text: "POWER MENU"
-
-                                font.family: root.textFont
-                                font.pixelSize: 10
-                                font.letterSpacing: 1
-
-                                color: root.currentTheme.color8
                             }
                         }
                     }
