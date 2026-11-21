@@ -1,16 +1,18 @@
 import QtQuick
 import QtQuick.Layouts
+import qs.colors
 
-// search field configuration
 Item {
     id: root
 
+    property var currentTheme: CurrentColorscheme
+
     // public properties
     property alias text: input.text
-    property color foregroundColor: "#f2f2f2"
-    property color placeholderColor: "#929292"
-    property string fontFamily: "Inter"
-    property string iconFontFamily: "JetbrainsMono Nerd Font Propo"
+    property color foregroundColor: currentTheme.color1
+    property color placeholderColor: currentTheme.color13
+    property string fontFamily: currentTheme.font
+    property string iconFontFamily: currentTheme.nerdFont
 
     signal keyPressed(var event)
 
@@ -32,7 +34,7 @@ Item {
         // search icon
         Text {
             text: ""
-            color: root.placeholderColor
+            color: root.foregroundColor
             font.family: root.iconFontFamily
             font.pixelSize: 17
             Layout.alignment: Qt.AlignVCenter

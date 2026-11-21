@@ -2,17 +2,18 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 
-// result row configuration
 Rectangle {
     id: root
+
+    property var currentTheme: CurrentColorscheme
 
     // public properties
     property var entry
     property bool selected: false
-    property color foregroundColor: "#f2f2f2"
-    property color selectionColor: "#303030"
-    property string fontFamily: "Inter"
-    property string iconFontFamily: "JetbrainsMono Nerd Font Propo"
+    property color foregroundColor: currentTheme.color1
+    property color selectionColor: currentTheme.color11
+    property string fontFamily: currentTheme.font
+    property string iconFontFamily: currentTheme.nerdFont
 
     signal hovered()
     signal activated()

@@ -5,7 +5,6 @@ import Quickshell.Io
 import Quickshell.Wayland
 import qs.colors
 
-// logout module configuration
 Variants {
     id: root
 
@@ -21,8 +20,8 @@ Variants {
     property color buttonHoverBorderColor: root.currentTheme.color6
 
     // module fonts
-    property string iconFont: "JetbrainsMono Nerd Font Propo"
-    property string textFont: "Inter"
+    property string iconFont: currentTheme.nerdFont
+    property string textFont: currentTheme.font
 
     default property list<LogoutButton> buttons
 

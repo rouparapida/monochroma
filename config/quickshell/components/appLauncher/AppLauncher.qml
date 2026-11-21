@@ -3,11 +3,9 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
 import qs.colors
-
-import "components"
+import qs.components.appLauncher.modules
 import "logic/AppSearch.js" as AppSearch
 
-// app launcher configuration
 PanelWindow {
     id: root
 
