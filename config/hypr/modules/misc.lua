@@ -1,4 +1,4 @@
--- Misc
+-- misc
 hl.config({
     misc = {
         force_default_wallpaper = 0,

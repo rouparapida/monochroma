@@ -1,4 +1,4 @@
--- Input
+-- input
 hl.config({
     input = {
         kb_layout = "",
@@ -17,7 +17,7 @@ hl.config({
     },
 })
 
--- Gestures
+-- gestures
 hl.gesture({
     fingers = 3,
     direction = "horizontal",
@@ -26,7 +26,7 @@ hl.gesture({
     workspace_swipe_distance = 3000,
 })
 
--- Devices
+-- devices
 hl.device({
     name = "epic-mouse-v1",
     sensitivity = -0.5,

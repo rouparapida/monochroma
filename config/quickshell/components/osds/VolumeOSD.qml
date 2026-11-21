@@ -11,6 +11,7 @@ Scope {
 
     property var currentTheme: CurrentColorscheme
     property bool shouldShowOsd: false
+    property bool volumeInitialized: false
 
     // track the default audio sink
     PwObjectTracker {
@@ -22,6 +23,11 @@ Scope {
         target: Pipewire.defaultAudioSink?.audio
 
         function onVolumeChanged() {
+            if (!root.volumeInitialized) {
+                root.volumeInitialized = true
+                return
+            }
+
             root.shouldShowOsd = true
             hideTimer.restart()
         }

@@ -1,4 +1,4 @@
--- Monitors
+-- monitors
 hl.monitor({
     output = "",
     mode = "",

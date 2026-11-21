@@ -1,16 +1,17 @@
--- Variables
+-- variables
 local mainMod = "SUPER"
 
 local terminal = "kitty"
 local fileManager = "nemo"
-local appmenu = "rofi -show drun -show-icons"
+local appmenu = "qs ipc call appLauncher toggle"
 
--- Keybinds
+-- keybinds
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(appmenu))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("qs ipc call logout open"))
 
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
@@ -46,5 +47,5 @@ hl.bind("F1", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
 hl.bind("F2", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"))
 hl.bind("F3", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"))
 
-hl.bind("F4", hl.dsp.exec_cmd("brightnessctl set 10%-"))
-hl.bind("F5", hl.dsp.exec_cmd("brightnessctl set +10%"))
+hl.bind("F4", hl.dsp.exec_cmd("brightnessctl set 5%-"))
+hl.bind("F5", hl.dsp.exec_cmd("brightnessctl set +5%"))

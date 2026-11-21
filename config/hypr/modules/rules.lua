@@ -1,4 +1,4 @@
--- Hyprland-run windowrule
+-- hyprland-run windowrule
 hl.window_rule({
     name = "move-hyprland-run",
     match = { class = "hyprland-run" },
@@ -6,7 +6,7 @@ hl.window_rule({
     float = true,
 })
 
--- Floating rules
+-- floating rules
 hl.window_rule({
     name = "floating-pavucontrol",
     match = { class = "org.pulseaudio.pavucontrol" },
@@ -19,14 +19,14 @@ hl.window_rule({
     float = true,
 })
 
--- Windows and workspaces
+-- windows and workspaces
 hl.window_rule({
     name = "suppress-maximize-events",
     match = { class = ".*" },
     suppress_event = "maximize",
 })
 
--- Fix XWayland drags
+-- fix XWayland drags
 hl.window_rule({
     name = "fix-xwayland-drags",
     match = {

@@ -19,6 +19,7 @@ QtObject {
     readonly property color color12: "#EAEAEA"
 
     readonly property color color13: "#14FFFFFF"
+    readonly property color color14: '#6e000000'
 
     readonly property string font: "Inter"
     readonly property string nerdFont: "JetbrainsMono Nerd Font Propo"

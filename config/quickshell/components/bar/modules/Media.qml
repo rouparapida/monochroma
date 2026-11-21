@@ -102,5 +102,12 @@ Item {
             elide: Text.ElideRight
             maximumLineCount: 1
         }
+
+        Behavior on width {
+           NumberAnimation {
+               duration: 200
+               easing.type: Easing.OutCubic
+           }
+        }
     }
 }

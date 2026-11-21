@@ -48,6 +48,7 @@ Item {
 
         font.family: root.currentTheme.nerdFont
         font.pixelSize: 12
+        font.bold: true
 
         color: root.currentTheme.color1
     }
