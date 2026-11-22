@@ -1,9 +1,9 @@
-
-import QtQuick
-import QtQuick.Layouts
 import Quickshell
 import Quickshell.Services.Pipewire
 import Quickshell.Widgets
+import Quickshell.Wayland
+import QtQuick
+import QtQuick.Layouts
 import qs.colors
 
 Scope {
@@ -12,6 +12,8 @@ Scope {
     property var currentTheme: CurrentColorscheme
     property bool shouldShowOsd: false
     property bool volumeInitialized: false
+
+    WlrLayershell.layer: WlrLayer.Overlay
 
     // track the default audio sink
     PwObjectTracker {

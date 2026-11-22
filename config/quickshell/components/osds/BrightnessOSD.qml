@@ -1,9 +1,9 @@
-
-import QtQuick
-import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
 import Quickshell.Widgets
+import Quickshell.Wayland
+import QtQuick
+import QtQuick.Layouts
 import qs.colors
 
 Scope {
@@ -14,6 +14,8 @@ Scope {
     property real currentBrightness: 0
     property bool initialized: false
     property bool shouldShowOsd: false
+
+    WlrLayershell.layer: WlrLayer.Overlay
 
     // monitor brightness changes
     Process {
