@@ -13,8 +13,6 @@ Scope {
     property bool shouldShowOsd: false
     property bool volumeInitialized: false
 
-    WlrLayershell.layer: WlrLayer.Overlay
-
     // track the default audio sink
     PwObjectTracker {
         objects: [Pipewire.defaultAudioSink]

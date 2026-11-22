@@ -15,8 +15,6 @@ Scope {
     property bool initialized: false
     property bool shouldShowOsd: false
 
-    WlrLayershell.layer: WlrLayer.Overlay
-
     // monitor brightness changes
     Process {
         id: brightnessProcess
