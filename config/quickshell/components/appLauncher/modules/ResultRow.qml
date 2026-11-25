@@ -19,7 +19,7 @@ Rectangle {
     signal activated()
 
     // selection styling
-    radius: 9
+    radius: 0
     color: selected ? selectionColor : "transparent"
 
     // result content layout

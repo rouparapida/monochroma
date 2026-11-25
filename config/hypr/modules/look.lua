@@ -1,8 +1,8 @@
--- Window look
+-- window look
 hl.config({
     general = {
         gaps_in = 3,
-        gaps_out = 10,
+        gaps_out = 6,
         border_size = 1,
 
         col = {
@@ -16,7 +16,7 @@ hl.config({
     },
 
     decoration = {
-        rounding = 14,
+        rounding = 0,
         rounding_power = 2,
 
         active_opacity = 1.0,
@@ -41,7 +41,7 @@ hl.config({
     },
 })
 
--- Animations
+-- animations
 hl.curve("easeOutQuint", { type = "bezier", points = { { 0.23, 1 }, { 0.32, 1 } } })
 hl.curve("easeInOutCubic", { type = "bezier", points = { { 0.65, 0.05 }, { 0.36, 1 } } })
 hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
@@ -71,7 +71,7 @@ hl.animation({ leaf = "workspacesOut", enabled = true, speed = 3.5, bezier = "ea
 
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7.2, bezier = "quick" })
 
--- Layouts
+-- layouts
 hl.config({
     dwindle = {
         preserve_split = true,

@@ -93,7 +93,7 @@ Variants {
                     width: Math.min(parent.width * 0.46, 620)
                     height: content.implicitHeight + 40
 
-                    radius: 20
+                    radius: 0
                     color: root.panelColor
 
                     border.width: 1
@@ -168,7 +168,7 @@ Variants {
                                     Layout.fillWidth: true
                                     Layout.preferredHeight: 76
 
-                                    radius: 12
+                                    radius: 0
                                     color: root.buttonColor
                                     border.color: root.buttonBorderColor
                                     border.width: 1

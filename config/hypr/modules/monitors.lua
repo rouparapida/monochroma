@@ -1,7 +1,7 @@
 -- monitors
 hl.monitor({
     output = "",
-    mode = "",
-    position = "",
-    scale = "",
+    mode = "preferred",
+    position = "auto",
+    scale = "auto",
 })

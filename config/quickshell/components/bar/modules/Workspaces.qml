@@ -8,7 +8,7 @@ Row {
     id: root
 
     property int indicatorSize: 6
-    property int indicatorHeight: 8
+    property int indicatorHeight: 6
     property int indicatorSpacing: 5
     property int activeWidth: 28
 

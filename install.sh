@@ -40,7 +40,6 @@ sudo pacman -S --needed --noconfirm \
     awww \
     hyprlock \
     hyprshot \
-    hyprsunset \
     hyprpicker \
     wl-clipboard \
     cliphist \

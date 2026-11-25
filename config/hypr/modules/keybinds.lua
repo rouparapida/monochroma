@@ -1,6 +1,5 @@
 -- variables
 local mainMod = "SUPER"
-
 local terminal = "kitty"
 local fileManager = "nemo"
 local appmenu = "qs ipc call appLauncher toggle"
