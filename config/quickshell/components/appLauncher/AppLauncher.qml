@@ -1,3 +1,4 @@
+
 import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
@@ -57,110 +58,110 @@ PanelWindow {
 
     // refresh search results
     function refreshResults(): void {
-        const entries = DesktopEntries.applications.values.concat(extraEntries);
-        results = AppSearch.search(entries, searchField.text, maxResults);
-        selectedIndex = 0;
+        const entries = DesktopEntries.applications.values.concat(extraEntries)
+        results = AppSearch.search(entries, searchField.text, maxResults)
+        selectedIndex = 0
 
         Qt.callLater(function() {
-            resultsView.positionViewAtBeginning();
-        });
+            resultsView.positionViewAtBeginning()
+        })
     }
 
     // open launcher
     function open(): void {
-        hideAnimation.stop();
-        showAnimation.stop();
-        closing = false;
+        hideAnimation.stop()
+        showAnimation.stop()
+        closing = false
 
-        searchField.text = "";
-        refreshResults();
-        visible = true;
+        searchField.text = ""
+        refreshResults()
+        visible = true
 
-        backdrop.opacity = 0;
-        launcherCard.opacity = 0;
-        launcherCard.scale = 0.985;
+        backdrop.opacity = 0
+        launcherCard.opacity = 0
+        launcherCard.scale = 0.985
 
         Qt.callLater(function() {
-            showAnimation.start();
-            searchField.focusInput();
-        });
+            showAnimation.start()
+            searchField.focusInput()
+        })
     }
 
     // close launcher
     function close(): void {
         if (!visible || closing)
-            return;
+            return
 
-        closing = true;
-        showAnimation.stop();
-        hideAnimation.start();
+        closing = true
+        showAnimation.stop()
+        hideAnimation.start()
     }
 
     // toggle launcher visibility
     function toggle(): void {
         if (visible && !closing)
-            close();
+            close()
         else
-            open();
+            open()
     }
 
     // navigate search results
     function moveSelection(direction: int): void {
         if (results.length === 0)
-            return;
+            return
 
-        selectedIndex = (selectedIndex + direction + results.length) % results.length;
+        selectedIndex = (selectedIndex + direction + results.length) % results.length
 
         Qt.callLater(function() {
-            resultsView.positionViewAtIndex(selectedIndex, ListView.Contain);
-        });
+            resultsView.positionViewAtIndex(selectedIndex, ListView.Contain)
+        })
     }
 
     // launch selected application
     function launchSelected(): void {
         if (selectedIndex < 0 || selectedIndex >= results.length)
-            return;
+            return
 
-        const entry = results[selectedIndex].entry;
+        const entry = results[selectedIndex].entry
         if (!entry)
-            return;
+            return
 
         if (typeof entry.execute === "function") {
-            entry.execute();
+            entry.execute()
         } else if (entry.command && entry.command.length > 0) {
             Quickshell.execDetached({
                 command: entry.command,
                 workingDirectory: entry.workingDirectory || undefined
-            });
+            })
         } else {
-            return;
+            return
         }
 
-        close();
+        close()
     }
 
     // keyboard shortcuts
     function handleKey(event): void {
         switch (event.key) {
         case Qt.Key_Down:
-            moveSelection(1);
-            event.accepted = true;
-            break;
+            moveSelection(1)
+            event.accepted = true
+            break
         case Qt.Key_Up:
-            moveSelection(-1);
-            event.accepted = true;
-            break;
+            moveSelection(-1)
+            event.accepted = true
+            break
         case Qt.Key_Return:
         case Qt.Key_Enter:
-            launchSelected();
-            event.accepted = true;
-            break;
+            launchSelected()
+            event.accepted = true
+            break
         case Qt.Key_Escape:
-            close();
-            event.accepted = true;
-            break;
+            close()
+            event.accepted = true
+            break
         default:
-            break;
+            break
         }
     }
 
@@ -169,7 +170,7 @@ PanelWindow {
         target: DesktopEntries
 
         function onApplicationsChanged(): void {
-            root.refreshResults();
+            root.refreshResults()
         }
     }
 
@@ -177,9 +178,9 @@ PanelWindow {
     IpcHandler {
         target: "appLauncher"
 
-        function toggle(): void { root.toggle(); }
-        function open(): void { root.open(); }
-        function close(): void { root.close(); }
+        function toggle(): void { root.toggle() }
+        function open(): void { root.open() }
+        function close(): void { root.close() }
     }
 
     // background overlay
@@ -206,12 +207,12 @@ PanelWindow {
         // launcher panel
         Rectangle {
             id: launcherCard
+
             width: parent.width
             height: contentColumn.implicitHeight + 28
             radius: root.cardRadius
             color: root.surfaceColor
-            border.width: 1
-            border.color: root.borderColor
+
             opacity: 0
             scale: 0.985
             clip: true
@@ -233,29 +234,36 @@ PanelWindow {
             // launcher content layout
             Column {
                 id: contentColumn
+
                 anchors {
                     fill: parent
                     margins: 14
                 }
+
                 spacing: 0
 
                 // search field
                 SearchField {
                     id: searchField
+
                     width: parent.width
                     height: 26
+
                     foregroundColor: root.textColor
                     placeholderColor: root.secondaryTextColor
                     fontFamily: root.textFont
                     iconFontFamily: root.iconFont
 
                     onTextChanged: root.refreshResults()
-                    onKeyPressed: function(event) { root.handleKey(event); }
+                    onKeyPressed: function(event) {
+                        root.handleKey(event)
+                    }
                 }
 
                 // search results section
                 Column {
                     id: resultsSection
+
                     width: parent.width
                     visible: searchField.text.trim().length > 0
                     spacing: 8
@@ -270,6 +278,7 @@ PanelWindow {
                     // results list
                     ListView {
                         id: resultsView
+
                         width: parent.width
                         height: root.resultsViewportHeight
                         clip: true
@@ -286,8 +295,10 @@ PanelWindow {
 
                             width: resultsView.width
                             height: root.resultRowHeight
+
                             entry: modelData.entry
                             selected: index === root.selectedIndex
+
                             foregroundColor: root.textColor
                             selectionColor: root.selectionColor
                             fontFamily: root.textFont
@@ -298,8 +309,8 @@ PanelWindow {
 
                             // launch clicked result
                             onActivated: {
-                                root.selectedIndex = index;
-                                root.launchSelected();
+                                root.selectedIndex = index
+                                root.launchSelected()
                             }
                         }
                     }
@@ -335,6 +346,24 @@ PanelWindow {
                     }
                 }
             }
+        }
+
+        // independent card border
+        Rectangle {
+            id: launcherBorder
+
+            anchors.fill: launcherCard
+
+            color: "transparent"
+            radius: root.cardRadius
+
+            border.width: 1
+            border.color: root.borderColor
+
+            opacity: launcherCard.opacity
+            scale: launcherCard.scale
+
+            z: 1
         }
     }
 
@@ -400,8 +429,8 @@ PanelWindow {
 
         // hide panel after animation
         onFinished: {
-            root.visible = false;
-            root.closing = false;
+            root.visible = false
+            root.closing = false
         }
     }
 }

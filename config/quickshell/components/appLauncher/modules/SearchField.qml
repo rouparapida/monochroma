@@ -1,5 +1,5 @@
+
 import QtQuick
-import QtQuick.Layouts
 import qs.colors
 
 Item {
@@ -18,69 +18,80 @@ Item {
 
     // focus input and move cursor to the end
     function focusInput(): void {
-        input.forceActiveFocus();
-        input.cursorPosition = input.text.length;
+        input.forceActiveFocus()
+        input.cursorPosition = input.text.length
     }
 
-    // search field layout
-    RowLayout {
+    // search icon
+    Text {
+        id: searchIcon
+
         anchors {
-            fill: parent
+            left: parent.left
             leftMargin: 8
+            verticalCenter: parent.verticalCenter
+        }
+
+        text: ""
+        color: root.foregroundColor
+        font.family: root.iconFontFamily
+        font.pixelSize: 17
+    }
+
+    // input area
+    Item {
+        id: inputArea
+
+        anchors {
+            left: searchIcon.right
+            leftMargin: 12
+            right: parent.right
             rightMargin: 8
+            top: parent.top
+            bottom: parent.bottom
         }
-        spacing: 12
 
-        // search icon
+        clip: true
+
+        // placeholder text
         Text {
-            text: ""
-            color: root.foregroundColor
-            font.family: root.iconFontFamily
-            font.pixelSize: 17
-            Layout.alignment: Qt.AlignVCenter
+            anchors.verticalCenter: parent.verticalCenter
+
+            visible: input.text.length === 0
+            text: "Search applications..."
+            color: root.placeholderColor
+            font.family: root.fontFamily
+            font.pixelSize: 14
         }
 
-        // input area
-        Item {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
+        // text input
+        TextInput {
+            id: input
 
-            // placeholder text
-            Text {
-                anchors.verticalCenter: parent.verticalCenter
-                visible: input.text.length === 0
-                text: "Search applications..."
-                color: root.placeholderColor
-                font.family: root.fontFamily
-                font.pixelSize: 14
+            anchors.fill: parent
+
+            verticalAlignment: TextInput.AlignVCenter
+            color: root.foregroundColor
+            selectionColor: "#5f5f5f"
+            selectedTextColor: "#ffffff"
+
+            // custom cursor
+            cursorDelegate: Rectangle {
+                width: 1
+                color: root.foregroundColor
             }
 
-            // text input
-            TextInput {
-                id: input
-                anchors.fill: parent
-                verticalAlignment: TextInput.AlignVCenter
-                color: root.foregroundColor
-                selectionColor: "#5f5f5f"
-                selectedTextColor: "#ffffff"
+            font.family: root.fontFamily
+            font.pixelSize: 14
 
-                // custom cursor
-                cursorDelegate: Rectangle {
-                    width: 1
-                    color: root.foregroundColor
-                }
+            clip: true
+            selectByMouse: true
+            focus: false
 
-                font.family: root.fontFamily
-                font.pixelSize: 14
-                clip: true
-                selectByMouse: true
-                focus: false
-
-                // forward keyboard events to the launcher
-                Keys.priority: Keys.BeforeItem
-                Keys.onPressed: function(event) {
-                    root.keyPressed(event);
-                }
+            // forward keyboard events to the launcher
+            Keys.priority: Keys.BeforeItem
+            Keys.onPressed: function(event) {
+                root.keyPressed(event)
             }
         }
     }

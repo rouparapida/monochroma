@@ -38,8 +38,17 @@ PanelWindow {
         color: config.currentTheme.color0
         radius: 0
 
-        //border.width: 1
-        //border.color: config.currentTheme.color13
+        // bottom border
+        Rectangle {
+           anchors {
+               bottom: parent.bottom
+               left: parent.left
+               right: parent.right
+           }
+
+           height: 1
+           color: config.currentTheme.color13
+        }
 
         // left modules
         RowLayout {
