@@ -1,8 +1,8 @@
 -- window look
 hl.config({
     general = {
-        gaps_in = 3,
-        gaps_out = 6,
+        gaps_in = 4,
+        gaps_out = 8,
         border_size = 1,
 
         col = {
@@ -16,23 +16,23 @@ hl.config({
     },
 
     decoration = {
-        rounding = 0,
+        rounding = 12,
         rounding_power = 2,
 
         active_opacity = 1.0,
         inactive_opacity = 1.0,
 
         shadow = {
-            enabled = false,
-            range = 20,
+            enabled = true,
+            range = 18,
             render_power = 3,
-            color = 0x55000000,
+            color = 0x44000000,
         },
 
         blur = {
-            enabled = false,
-            size = 6,
-            passes = 3,
+            enabled = true,
+            size = 5,
+            passes = 2,
         },
     },
 

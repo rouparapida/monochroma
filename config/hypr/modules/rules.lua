@@ -19,6 +19,14 @@ hl.window_rule({
     float = true,
 })
 
+-- blur rules
+hl.layer_rule({
+    name = "quickshell-blur",
+    match = { namespace = "quickshell" },
+    blur = true,
+    ignore_alpha = 0.25,
+})
+
 -- windows and workspaces
 hl.window_rule({
     name = "suppress-maximize-events",
@@ -39,5 +47,3 @@ hl.window_rule({
     },
     no_focus = true,
 })
-
-

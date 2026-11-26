@@ -11,8 +11,8 @@ PanelWindow {
     property var currentTheme: CurrentColorscheme
 
     property int barHeight: 30
-    property int horizontalPadding: 8
-    property int moduleSpacing: 8
+    property int horizontalPadding: 13
+    property int moduleSpacing: 10
 
     anchors {
         top: true
@@ -21,9 +21,9 @@ PanelWindow {
     }
 
     margins {
-        top: 0
-        left: 0
-        right: 0
+        top: 4
+        left: 100
+        right: 100
     }
 
     implicitHeight: barHeight
@@ -36,19 +36,10 @@ PanelWindow {
         anchors.fill: parent
 
         color: config.currentTheme.color0
-        radius: 0
+        radius: height / 2
 
-        // bottom border
-        Rectangle {
-           anchors {
-               bottom: parent.bottom
-               left: parent.left
-               right: parent.right
-           }
-
-           height: 1
-           color: config.currentTheme.color13
-        }
+        border.width: 1
+        border.color: config.currentTheme.color13
 
         // left modules
         RowLayout {
@@ -105,8 +96,6 @@ PanelWindow {
             }
 
             spacing: config.moduleSpacing
-
-            Media {}
 
             Network {}
 

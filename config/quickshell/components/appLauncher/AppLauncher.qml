@@ -15,7 +15,7 @@ PanelWindow {
     property int maxResults: 80
     property int resultRowHeight: 42
     property int launcherWidth: 600
-    property int cardRadius: 0
+    property int cardRadius: 12
     property var extraEntries: []
     property var currentTheme: CurrentColorscheme
 
