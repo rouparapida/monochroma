@@ -78,7 +78,7 @@ Scope {
         PanelWindow {
             anchors.bottom: true
             anchors.right: true
-            margins.bottom: 30
+            margins.bottom: 0
             margins.right: 450
 
             exclusiveZone: 0
@@ -92,11 +92,10 @@ Scope {
             Rectangle {
                 anchors.fill: parent
 
-                radius: height / 2
+                radius: 0
+                topLeftRadius: height / 2
+                topRightRadius: height / 2
                 color: root.currentTheme.color0
-
-                border.width: 1
-                border.color: root.currentTheme.color13
 
                 RowLayout {
                     anchors {
@@ -119,7 +118,7 @@ Scope {
                             if (root.currentBrightness < 0.75)
                                 return "󰃠"
 
-                            return "󰃡"
+                            return "󰃠"
                         }
 
                         font {

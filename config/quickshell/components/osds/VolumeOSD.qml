@@ -13,12 +13,12 @@ Scope {
     property bool shouldShowOsd: false
     property bool volumeInitialized: false
 
-    // track the default audio sink
+    // Track the default audio sink
     PwObjectTracker {
         objects: [Pipewire.defaultAudioSink]
     }
 
-    // listen for volume changes
+    // Listen for volume changes
     Connections {
         target: Pipewire.defaultAudioSink?.audio
 
@@ -33,7 +33,7 @@ Scope {
         }
     }
 
-    // hide the OSD after one second
+    // Hide the OSD after two seconds
     Timer {
         id: hideTimer
 
@@ -42,14 +42,15 @@ Scope {
         onTriggered: root.shouldShowOsd = false
     }
 
-    // volume OSD window
+    // Volume OSD window
     LazyLoader {
         active: root.shouldShowOsd
 
         PanelWindow {
             anchors.bottom: true
             anchors.left: true
-            margins.bottom: 30
+
+            margins.bottom: 0
             margins.left: 450
 
             exclusiveZone: 0
@@ -63,11 +64,11 @@ Scope {
             Rectangle {
                 anchors.fill: parent
 
-                radius: height / 2
-                color: root.currentTheme.color0
+                radius: 0
+                topLeftRadius: height / 2
+                topRightRadius: height / 2
 
-                border.width: 1
-                border.color: root.currentTheme.color13
+                color: root.currentTheme.color0
 
                 RowLayout {
                     anchors {
@@ -78,7 +79,7 @@ Scope {
 
                     spacing: 10
 
-                    // volume icon
+                    // Volume icon
                     Text {
                         text: {
                             const audio = Pipewire.defaultAudioSink?.audio
@@ -105,16 +106,19 @@ Scope {
                         verticalAlignment: Text.AlignVCenter
                     }
 
-                    // volume level indicator
+                    // Volume level indicator
                     Rectangle {
                         Layout.fillWidth: true
+                        Layout.minimumWidth: 0
 
                         implicitHeight: 6
                         radius: 20
 
                         color: root.currentTheme.color6
 
-                        // current volume level
+                        clip: true
+
+                        // Current volume level
                         Rectangle {
                             anchors {
                                 left: parent.left
@@ -122,8 +126,12 @@ Scope {
                                 bottom: parent.bottom
                             }
 
-                            implicitWidth: parent.width * (
-                                Pipewire.defaultAudioSink?.audio.volume ?? 0
+                            width: parent.width * Math.max(
+                                0,
+                                Math.min(
+                                    Pipewire.defaultAudioSink?.audio.volume ?? 0,
+                                    1.0
+                                )
                             )
 
                             radius: parent.radius
